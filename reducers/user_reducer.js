@@ -4,7 +4,7 @@ import {
 } from '../actions';
 
 const defaultState = {
-  users: null,
+  users: [],
   loading: false
 };
 

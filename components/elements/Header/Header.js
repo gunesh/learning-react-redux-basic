@@ -4,6 +4,12 @@ import './Header.css';
 
 const Header = () => (
   <div className="rmdb-header">
+
+   <Link to="/test">
+       Test Link
+      </Link>
+
+
     <div className="rmdb-header-content">
       <Link to="/">
         <img className="rmdb-logo" src="/images/reactMovie_logo.png" alt="rmdb-logo" />

@@ -19,7 +19,7 @@ export function showLoadingSpinner() {
 
 export function getUsers() {
   const endpoint = `${USER_API_URL1}`;
-  console.log(endpoint);
+  
   const request = getResult(endpoint);
   return {
     type: GET_USERS,

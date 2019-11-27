@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  getPopularMovies,
-  showLoadingSpinner,
-  searchMovies,
-  clearMovies,
-  loadMoreMovies,
-  setPopularPersistedState
+  getUsers,
+  showLoadingSpinner
 } from '../actions';
 
 

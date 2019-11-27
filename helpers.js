@@ -22,3 +22,15 @@ export const fetchApi = (endpoint, returnFunc = result => result) => {
     })
     .catch(error => console.error('Error:', error));
 }
+
+
+
+export const getResult = (endpoint, returnFunc = result => result) => {
+  return fetch(endpoint)
+    .then(result => result.json())
+    .then(result => {
+      return returnFunc(result);
+    })
+    .catch(error => console.error('Error:', error));
+}
+

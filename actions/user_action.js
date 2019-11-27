@@ -1,5 +1,5 @@
 import { USER_API_URL, API_URL, API_KEY  } from '../config';
-import { fetchApi } from '../helpers';
+import { getResult } from '../helpers';
 
 
 // actions types for Movie
@@ -19,7 +19,7 @@ export function showLoadingSpinner() {
 
 export function getUsers() {
   const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-  const request = fetchApi(endpoint);
+  const request = getResult(endpoint);
   return {
     type: GET_USERS,
     payload: request

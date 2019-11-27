@@ -1,61 +1,49 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import {
-  getUsers,
-  showLoadingSpinner
-} from '../actions';
-
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { getUsers, showLoadingSpinner } from "../actions";
 
 class TestContainer extends Component {
-  
-  componentDidMount(){
+  componentDidMount() {
     this.getUsers();
   }
 
-  componentDidUpdate() {
-   
-  }
+  componentDidUpdate() {}
 
-   getUsers = () => {
+  getUsers = () => {
     this.props.showLoadingSpinner();
     this.props.getUsers();
-  }
+  };
 
-  getTemplate(element){
+  getTemplate(element) {
     return (
       <tr>
-        
         <td>{element.first_name}</td>
         <td>{element.last_name}</td>
         <td>{element.email}</td>
         <td>{element.avatar}</td>
-        <td>Ed</td>
-      </tr>);
+        <td>Edit Delete</td>
+      </tr>
+    );
   }
 
   render() {
     return (
       <>
-      <table width="100%" border="1">
-      <thead><tr>
-<th>first_name</th>
-<th>Last name</th>
-<th>email</th>
-<th>Photot</th>
-<th>Action</th>
-</tr></thead>
-      
-     
+        <table width="100%" border="1">
+          <thead>
+            <tr>
+              <th>first_name</th>
+              <th>Last name</th>
+              <th>email</th>
+              <th>Photot</th>
+              <th>Action</th>
+            </tr>
+          </thead>
 
-       <tbody>
-      
-
-      {this.props.users.map((element, i) => (
-         this.getTemplate(element)
-      ))}
-      </tbody>
-      </table>
-
+          <tbody>
+            {this.props.users.map((element, i) => this.getTemplate(element))}
+          </tbody>
+        </table>
       </>
     );
   }
@@ -63,12 +51,12 @@ class TestContainer extends Component {
 
 const mapStateToProps = state => {
   return state.users;
-}
+};
 
 const mapDispatchToProps = {
-getUsers,
-showLoadingSpinner
-}
+  getUsers,
+  showLoadingSpinner
+};
 
 export default connect(
   mapStateToProps,

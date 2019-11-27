@@ -18,11 +18,15 @@ export function showLoadingSpinner() {
 }
 
 export function getUsers() {
+  let tmpArr = [];
   let endpoint = `${USER_API_URL}`;
-  const request = fetchApi(endpoint);
+  const request = fetchApi(endpoint,(res)=>{
+    console.log(res);
+    tmpArr  = res;
+  });
   console.log(request);
   return {
     type: GET_USERS,
-    payload: request
+    payload: []
   }
 }

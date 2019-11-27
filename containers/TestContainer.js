@@ -8,7 +8,21 @@ import {
 
 class TestContainer extends Component {
   
+  componentDidMount(){
+    this.getUsers();
+  }
+
+  componentDidUpdate() {
+   
+  }
+
+   getUsers = () => {
+    this.props.showLoadingSpinner();
+    this.props.getUsers();
+  }
+
   render() {
+    console.log(this.props);
     return (
       <>
       Test C
@@ -18,11 +32,12 @@ class TestContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  return state.home;
+  return state.users;
 }
 
 const mapDispatchToProps = {
-
+getUsers,
+showLoadingSpinner
 }
 
 export default connect(

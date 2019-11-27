@@ -20,7 +20,6 @@ class TestContainer extends Component {
         <td>{element.first_name}</td>
         <td>{element.last_name}</td>
         <td>{element.email}</td>
-
         <td>Edit Delete</td>
       </tr>
     );
@@ -35,7 +34,6 @@ class TestContainer extends Component {
               <th>first_name</th>
               <th>Last name</th>
               <th>email</th>
-
               <th>Action</th>
             </tr>
           </thead>

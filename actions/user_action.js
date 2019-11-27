@@ -19,6 +19,7 @@ export function showLoadingSpinner() {
 
 export function getUsers() {
   const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+  console.log(endpoint);
   const request = getResult(endpoint);
   return {
     type: GET_USERS,

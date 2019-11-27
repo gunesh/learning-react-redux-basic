@@ -1,4 +1,4 @@
-import { USER_API_URL } from '../config';
+import { USER_API_URL, API_URL, API_KEY  } from '../config';
 import { fetchApi } from '../helpers';
 
 
@@ -18,13 +18,8 @@ export function showLoadingSpinner() {
 }
 
 export function getUsers() {
-  let tmpArr = [];
-  let endpoint = `${USER_API_URL}`;
-  const request = fetchApi(endpoint,(res)=>{
-    console.log(res);
-    tmpArr  = res;
-  });
-  console.log(request);
+  const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+  const request = fetchApi(endpoint);
   return {
     type: GET_USERS,
     payload: request

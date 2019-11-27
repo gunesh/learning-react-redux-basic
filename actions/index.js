@@ -1,5 +1,5 @@
 import { API_URL, API_KEY } from '../config';
-import { fetchMovies } from '../helpers';
+import { fetchMovies,fetchList } from '../helpers';
 
 // action types for Home
 export const GET_POPULAR_MOVIES = 'GET_POPULAR_MOVIES';
@@ -127,5 +127,37 @@ export function clearMovies() {
   return {
     type: CLEAR_MOVIES,
     payload: null
+  }
+}
+
+
+export const GET_POPULAR_USERS = 'GET_POPULAR_USERS';
+export const CLEAR_USERS = 'CLEAR_USERS';
+export const SET_POPULAR_PERSISTED_STATE_USER = 'SET_POPULAR_PERSISTED_STATE_USER';
+
+export function getPopularUsers() {
+  const endpoint = `${USER_API_URL}`;
+  const request = fetchList(endpoint);
+  console.log(request);
+  return {
+    type: GET_POPULAR_USERS,
+    payload: request
+  }
+}
+
+
+export function clearUsers() {
+  return {
+    type: CLEAR_USERS,
+    payload: null
+  }
+}
+
+
+// action creators for Home
+export function setPopularPersistedStateUsers(state) {
+  return {
+    type: SET_POPULAR_PERSISTED_STATE_USER,
+    payload: state
   }
 }

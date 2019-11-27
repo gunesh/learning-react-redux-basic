@@ -3,9 +3,8 @@ import { fetchApi } from '../helpers';
 
 
 // actions types for Movie
-export const GET_MOVIE = 'GET_MOVIE';
-export const CLEAR_MOVIE = 'CLEAR_MOVIE';
-export const SET_MOVIE_PERSISTED_STATE = 'SET_MOVIE_PERSISTED_STATE';
+export const GET_USERS = 'GET_USERS';
+
 
 // action types for both
 export const SHOW_LOADING_SPINNER = 'SHOW_LOADING_SPINNER';
@@ -18,48 +17,12 @@ export function showLoadingSpinner() {
   }
 }
 
-// action creators for Movie
-export function setMoviePersistedState(state) {
+export function getUsers() {
+  let endpoint = `${USER_API_URL}`;
+  const request = fetchApi(endpoint);
+  console.log(request);
   return {
-    type: SET_MOVIE_PERSISTED_STATE,
-    payload: state
-  }
-}
-
-export function clearMovie() {
-  return {
-    type: CLEAR_MOVIE,
-    payload: null
-  }
-}
-
-export function getMovie(movieId) {
-  let endpoint = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`;
-  let newState = {};
-
-  const request = fetchApi(endpoint, result => {
-    if (result.status_code) {
-      // If we don't find any movie
-      return newState;
-    } else {
-      newState = { movie: result };
-      endpoint = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
-
-      return fetchApi(endpoint, result => {
-        const directors = result.crew.filter((member) => member.job === "Director");
-        newState.actors = result.cast;
-        newState.directors = directors;
-
-        return newState;
-
-      })
-    }
-
-  })
-    .catch(error => console.error("Error:", error));
-
-  return {
-    type: GET_MOVIE,
+    type: GET_USERS,
     payload: request
   }
 }

@@ -7,7 +7,7 @@ const MovieThumb = ({ image, movieId, movieName, clickable }) => (
   <div className="rmdb-moviethumb">
     {/* You can send props via the Links "to" object. Here we create our own "movieName" */}
     {clickable ?
-      <Link to={{ pathname: `/${movieId}`,  movieName: `${movieName}`}}>
+      <Link to={{ pathname: `/m/${movieId}`,  movieName: `${movieName}`}}>
         <img className="clickable" src={image} alt="moviethumb" />
       </Link>
       :

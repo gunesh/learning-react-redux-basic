@@ -1,12 +1,15 @@
-import { combineReducers } from 'redux';
-import home from './home_reducer';
-import movie from './movie_reducer';
-import test from './test_reducer';
+import { combineReducers } from "redux";
+import login from "./login";
+import user from "./user";
+import admin from "./admin";
+import about from "./about";
+
 
 const rootReducer = combineReducers({
-  home,
-  movie,
-  test
-})
+  login,
+  user,
+  admin,
+  about
+});
 
 export default rootReducer;

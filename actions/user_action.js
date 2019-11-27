@@ -1,4 +1,4 @@
-import { USER_API_URL, API_URL, API_KEY  } from '../config';
+import { USER_API_URL, API_URL, API_KEY ,USER_API_URL1 } from '../config';
 import { getResult } from '../helpers';
 
 
@@ -18,7 +18,7 @@ export function showLoadingSpinner() {
 }
 
 export function getUsers() {
-  const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+  const endpoint = `${USER_API_URL1}`;
   console.log(endpoint);
   const request = getResult(endpoint);
   return {

@@ -4,7 +4,7 @@ const IMAGE_BASE_URL ='https://image.tmdb.org/t/p/';
 const BACKDROP_SIZE = 'w1280';
 const POSTER_SIZE = 'w500';
 const USER_API_URL = 'https://jsonplaceholder.typicode.com/users';
-const USER_API_URL1 = ''
+const USER_API_URL1 = 'https://reqres.in/api/users'
 
 export {
   API_URL,
@@ -12,5 +12,6 @@ export {
   IMAGE_BASE_URL,
   BACKDROP_SIZE,
   POSTER_SIZE,
-  USER_API_URL
+  USER_API_URL,
+  USER_API_URL1
 }

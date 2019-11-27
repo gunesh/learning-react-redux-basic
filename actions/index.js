@@ -1,8 +1,5 @@
 import { API_URL, API_KEY } from '../config';
-import { fetchApi } from '../helpers';
-
-// actions for login
-export const USER_LOGIN = 'USER_LOGIN';
+import { fetchMovies } from '../helpers';
 
 // action types for Home
 export const GET_POPULAR_MOVIES = 'GET_POPULAR_MOVIES';
@@ -18,20 +15,6 @@ export const SET_MOVIE_PERSISTED_STATE = 'SET_MOVIE_PERSISTED_STATE';
 
 // action types for both
 export const SHOW_LOADING_SPINNER = 'SHOW_LOADING_SPINNER';
-
-
-// action creator for login
-export function userLogin() {
-  let endpoint = `https://api.themoviedb.org/3/`;
-
-  const request = fetchApi(endpoint);
-  return {
-    type: USER_LOGIN,
-    payload: request
-  }
-}
-
-
 
 // action creator for both
 export function showLoadingSpinner() {
@@ -60,7 +43,7 @@ export function getMovie(movieId) {
   let endpoint = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`;
   let newState = {};
 
-  const request = fetchApi(endpoint, result => {
+  const request = fetchMovies(endpoint, result => {
     if (result.status_code) {
       // If we don't find any movie
       return newState;
@@ -68,7 +51,7 @@ export function getMovie(movieId) {
       newState = { movie: result };
       endpoint = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
 
-      return fetchApi(endpoint, result => {
+      return fetchMovies(endpoint, result => {
         const directors = result.crew.filter((member) => member.job === "Director");
         newState.actors = result.cast;
         newState.directors = directors;
@@ -98,7 +81,7 @@ export function setPopularPersistedState(state) {
 export function getPopularMovies() {
   const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
 
-  const request = fetchApi(endpoint);
+  const request = fetchMovies(endpoint);
 
   return {
     type: GET_POPULAR_MOVIES,
@@ -115,7 +98,7 @@ export function searchMovies(searchTerm) {
     endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${searchTerm}`;
   }
 
-  const request = fetchApi(endpoint, result => { return {...result, searchTerm }});
+  const request = fetchMovies(endpoint, result => { return {...result, searchTerm }});
 
   return {
     type: SEARCH_MOVIES,
@@ -132,7 +115,7 @@ export function loadMoreMovies(searchTerm, currentPage) {
     endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${searchTerm}&page=${currentPage + 1}`;
   }
 
-  const request = fetchApi(endpoint);
+  const request = fetchMovies(endpoint);
 
   return {
     type: LOAD_MORE_MOVIES,
@@ -146,5 +129,3 @@ export function clearMovies() {
     payload: null
   }
 }
-
-

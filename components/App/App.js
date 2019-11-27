@@ -1,25 +1,17 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Header from '../elements/Header/Header';
+import Home from '../../containers/HomeContainer';
+import Movie from '../../containers/MovieContainer';
 import NotFound from '../elements/NotFound/NotFound';
-import routes from '../../routes';
 
 const App = () => (
   <BrowserRouter>
     <React.Fragment>
+      <Header />
       <Switch>
-        {routes.map((route, idx) => {
-                    return route.component ? (
-                      <Route
-                        key={idx}
-                        path={route.path}
-                        exact={route.exact}
-                        name={route.name}
-                        render={props => (
-                          <route.component {...props} />
-                        )} />
-                    ) : (null);
-                  })}
-
+        <Route path="/" component={Home} exact />
+        <Route path="/:movieId" component={Movie} exact />
         <Route component={NotFound} />
       </Switch>
     </React.Fragment>

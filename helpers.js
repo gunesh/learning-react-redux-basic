@@ -15,29 +15,7 @@ export const convertMoney = (money) => {
 }
 
 export const fetchMovies = (endpoint, returnFunc = result => result) => {
-  
   return fetch(endpoint)
-    .then(result => result.json())
-    .then(result => {
-      return returnFunc(result);
-    })
-    .catch(error => console.error('Error:', error));
-}
-
-
-
-export const fetchApi = (endpoint, returnFunc = result => result) => {
-
-  let header = new Headers({
-    'Access-Control-Allow-Origin':'*',
-    'Content-Type': 'multipart/form-data'
-});
-  let sentData={
-    mode: 'cors',
-    header: header
-};
-
-  return fetch(endpoint,sentData)
     .then(result => result.json())
     .then(result => {
       return returnFunc(result);

@@ -8,6 +8,9 @@ const Header = () => (
    <Link to="/test">
        Test Link
       </Link>
+ <Link to="/">
+       Home
+      </Link>
 
 
     <div className="rmdb-header-content">

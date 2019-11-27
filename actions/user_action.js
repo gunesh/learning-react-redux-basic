@@ -27,6 +27,6 @@ export function getUsers() {
   console.log(request);
   return {
     type: GET_USERS,
-    payload: []
+    payload: request
   }
 }

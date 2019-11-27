@@ -34,8 +34,6 @@ class TestContainer extends Component {
   render() {
     return (
       <>
-      Test C
-
       {this.props.users.map((element, i) => (
          this.getTemplate(element)
       ))}

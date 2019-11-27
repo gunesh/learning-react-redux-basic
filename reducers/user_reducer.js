@@ -13,7 +13,7 @@ export default function(state = defaultState, action) {
    case GET_USERS:
       return {
         ...state,
-        users: action.payload.d,
+        users: action.payload.data,
         loading: false
       }
     case SHOW_LOADING_SPINNER:

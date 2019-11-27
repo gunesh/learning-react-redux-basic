@@ -23,20 +23,38 @@ class TestContainer extends Component {
 
   getTemplate(element){
     return (
-      <div>
-        <p>{element.title}</p>
-        <p>{element.backdrop_path}</p>
-        <p>{element.overview}</p>
-        <p>{element.release_date}</p>
-      </div>);
+      <tr>
+        
+        <td>{element.first_name}</td>
+        <td>{element.last_name}</td>
+        <td>{element.email}</td>
+        <td>{element.avatar}</td>
+        <td>Ed</td>
+      </tr>);
   }
 
   render() {
     return (
       <>
+      <table width="100%" border="1">
+      <thead><tr>
+<th>first_name</th>
+<th>Last name</th>
+<th>email</th>
+<th>Photot</th>
+<th>Action</th>
+</tr></thead>
+      
+     
+
+       <tbody>
+      
+
       {this.props.users.map((element, i) => (
          this.getTemplate(element)
       ))}
+      </tbody>
+      </table>
 
       </>
     );

@@ -14,7 +14,7 @@ export const convertMoney = (money) => {
   return formatter.format(money);
 }
 
-export const fetchMovies = (endpoint, returnFunc = result => result) => {
+export const fetchApi = (endpoint, returnFunc = result => result) => {
   return fetch(endpoint)
     .then(result => result.json())
     .then(result => {

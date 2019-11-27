@@ -29,6 +29,7 @@ export const getResult = (endpoint, returnFunc = result => result) => {
   return fetch(endpoint)
     .then(result => result.json())
     .then(result => {
+      console.log(result);
       return returnFunc(result);
     })
     .catch(error => console.error('Error:', error));

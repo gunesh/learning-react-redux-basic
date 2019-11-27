@@ -1,19 +1,16 @@
+import Home from './containers/HomeContainer';
+import Movie from './containers/MovieContainer';
 
+import Login from './containers/LoginContainer';
+import Register from './containers/RegisterContainer';
+import Index from './containers/IndexContainer';
 
-import Register from './components/Auth/Register/Register';
-
-import AboutContainer from './container/AboutContainer';
-import ContactContainer from './container/ContactContainer';
-import UserContainer from './container/UserContainer';
-import LoginContainer from './container/LoginContainer';
 const routes = [
-    { path: '/', exact: true, name: 'UserContainer',component: UserContainer },
-    { path: '/home', exact: true, name: 'UserContainer',component: UserContainer },
-    { path: '/about', exact: true, name: 'AboutContainer',component: AboutContainer },
-    { path: '/contact', exact: true, name: 'ContactContainer',component: ContactContainer },
-    { path: '/login', exact: true, name: 'LoginContainer',component: LoginContainer },
-    { path: '/register', exact: true, name: 'Register',component: Register }
-    
+    { path: '/', exact: true, name: 'Index',component: Index },
+    { path: '/home', exact: true, name: 'Home',component: Home },
+    { path: '/login', exact: true, name: 'Login',component: Login },
+    { path: '/register', exact: true, name: 'Register',component: Register },
+    { path: '/:movieId', exact: true, name: 'Movie',component: Movie }
 ];
 
 export default routes;

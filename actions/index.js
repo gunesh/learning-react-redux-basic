@@ -1,27 +1,62 @@
 import { API_URL, API_KEY } from '../config';
 import { fetchApi } from '../helpers';
 
+// actions for login
+export const USER_LOGIN = 'USER_LOGIN';
 
-//actions for banner
-export const GET_BANNER = "GET_BANNER";
+// action types for Home
+export const GET_POPULAR_MOVIES = 'GET_POPULAR_MOVIES';
+export const SEARCH_MOVIES = 'SEARCH_MOVIES';
+export const LOAD_MORE_MOVIES = 'LOAD_MORE_MOVIES';
+export const CLEAR_MOVIES = 'CLEAR_MOVIES';
+export const SET_POPULAR_PERSISTED_STATE = 'SET_POPULAR_PERSISTED_STATE';
 
-// action creator for banner
-export function getBanner() {
-  const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+// actions types for Movie
+export const GET_MOVIE = 'GET_MOVIE';
+export const CLEAR_MOVIE = 'CLEAR_MOVIE';
+export const SET_MOVIE_PERSISTED_STATE = 'SET_MOVIE_PERSISTED_STATE';
+
+// action types for both
+export const SHOW_LOADING_SPINNER = 'SHOW_LOADING_SPINNER';
+
+
+// action creator for login
+export function userLogin() {
+  let endpoint = `https://api.themoviedb.org/3/`;
+
   const request = fetchApi(endpoint);
   return {
-    type: GET_BANNER,
+    type: USER_LOGIN,
     payload: request
-  };
+  }
 }
 
 
 
-//actions for aboutus
-export const ABOUT_US = "ABOUT_US";
+// action creator for both
+export function showLoadingSpinner() {
+  return {
+    type: SHOW_LOADING_SPINNER,
+    payload: null
+  }
+}
 
-// action creator for aboutus
-export function getAboutUs(movieId) {
+// action creators for Movie
+export function setMoviePersistedState(state) {
+  return {
+    type: SET_MOVIE_PERSISTED_STATE,
+    payload: state
+  }
+}
+
+export function clearMovie() {
+  return {
+    type: CLEAR_MOVIE,
+    payload: null
+  }
+}
+
+export function getMovie(movieId) {
   let endpoint = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`;
   let newState = {};
 
@@ -43,25 +78,73 @@ export function getAboutUs(movieId) {
       })
     }
 
-  }).catch(error => console.error("Error:", error));
-  console.log(request);
+  })
+    .catch(error => console.error("Error:", error));
+
   return {
-    type: ABOUT_US,
+    type: GET_MOVIE,
     payload: request
-  };
+  }
 }
 
+// action creators for Home
+export function setPopularPersistedState(state) {
+  return {
+    type: SET_POPULAR_PERSISTED_STATE,
+    payload: state
+  }
+}
 
+export function getPopularMovies() {
+  const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
 
-//actions for LOGIN
-export const USER_LOGIN = "USER_LOGIN";
-
-// action creator for LOGIN
-export function loginAction() {
-  let endpoint = `https://reqres.in/api/login`;
   const request = fetchApi(endpoint);
+
   return {
-    type: USER_LOGIN,
+    type: GET_POPULAR_MOVIES,
     payload: request
-  };
+  }
 }
+
+export function searchMovies(searchTerm) {
+  let endpoint;
+
+  if (!searchTerm) {
+    endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+  } else {
+    endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${searchTerm}`;
+  }
+
+  const request = fetchApi(endpoint, result => { return {...result, searchTerm }});
+
+  return {
+    type: SEARCH_MOVIES,
+    payload: request
+  }
+}
+
+export function loadMoreMovies(searchTerm, currentPage) {
+  let endpoint;
+
+  if (!searchTerm) {
+    endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${currentPage + 1}`;
+  } else {
+    endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${searchTerm}&page=${currentPage + 1}`;
+  }
+
+  const request = fetchApi(endpoint);
+
+  return {
+    type: LOAD_MORE_MOVIES,
+    payload: request
+  }
+}
+
+export function clearMovies() {
+  return {
+    type: CLEAR_MOVIES,
+    payload: null
+  }
+}
+
+

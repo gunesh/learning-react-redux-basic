@@ -28,12 +28,18 @@ class TestContainer extends Component {
   render() {
     return (
       <>
-        <table width="100%" border="1">
+
+      <div className="rmdb-home-grid">
+      <br />
+      <br />
+      <br /><br />
+      <br />
+      <table width="100%" border="1">
           <thead>
             <tr>
-              <th>first_name</th>
-              <th>Last name</th>
-              <th>email</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -42,6 +48,9 @@ class TestContainer extends Component {
             {this.props.users.map((element, i) => this.getTemplate(element,i))}
           </tbody>
         </table>
+      </div>
+
+        
       </>
     );
   }

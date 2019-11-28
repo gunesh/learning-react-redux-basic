@@ -14,9 +14,9 @@ class TestContainer extends Component {
     this.props.getUsers();
   };
 
-  getTemplate(element) {
+  getTemplate(element,index) {
     return (
-      <tr>
+      <tr key={index}>
         <td>{element.first_name}</td>
         <td>{element.last_name}</td>
         <td>{element.email}</td>
@@ -39,7 +39,7 @@ class TestContainer extends Component {
           </thead>
 
           <tbody>
-            {this.props.users.map((element, i) => this.getTemplate(element))}
+            {this.props.users.map((element, i) => this.getTemplate(element,i))}
           </tbody>
         </table>
       </>

@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getUsers, showLoadingSpinner } from "../actions";
+import { getUsers, showLoadingSpinner, addNewUser } from "../actions";
 
 class TestContainer extends Component {
   state = {
     addForm: false,
     editForm: false,
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
     email: ""
   };
   componentDidMount() {
@@ -47,12 +47,26 @@ class TestContainer extends Component {
     var newUserObj = {
       first_name: event.target.first_name.value,
       last_name: event.target.last_name.value,
-      email: event.target.email.value
+      email: event.target.email.value,
+      id: "",
+      avatar: ""
     };
-    console.log(newUserObj);
+    var newUserObj = {
+      name: 'TEST',
+      job: "TEACHER"
+    };
+    this.props.addNewUser(newUserObj);
+    
   };
-  doEdit = event => {
-    this.setState({ addForm: false, editForm: true });
+  doEdit = element => {
+    console.log(element);
+    this.setState({
+      addForm: false,
+      editForm: true,
+      first_name: element.first_name,
+      last_name: element.last_name,
+      email: element.email
+    });
   };
 
   doEditCancel = event => {
@@ -96,13 +110,28 @@ class TestContainer extends Component {
             <div>
               <form onSubmit={this.doEditSave}>
                 <br />
-                <input type="text" name="first_name" placeholder="First Name" />
+                <input
+                  type="text"
+                  name="first_name"
+                  value={this.state.first_name}
+                  placeholder="First Name"
+                />
                 <br />
                 <br />
-                <input type="text" name="last_name" placeholder="Last Name" />
+                <input
+                  type="text"
+                  name="last_name"
+                  value={this.state.last_name}
+                  placeholder="Last Name"
+                />
                 <br />
                 <br />
-                <input type="text" name="email" placeholder="Email" />
+                <input
+                  type="text"
+                  name="email"
+                  value={this.state.email}
+                  placeholder="Email"
+                />
                 <br />
                 <br />
                 <button onClick={this.doEditCancel}>Cancel</button> &nbsp;
@@ -142,7 +171,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   getUsers,
-  showLoadingSpinner
+  showLoadingSpinner,
+  addNewUser
 };
 
 export default connect(

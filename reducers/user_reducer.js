@@ -1,4 +1,5 @@
 import {
+  ADD_NEW_USER,
   GET_USERS,
   SHOW_LOADING_SPINNER
 } from '../actions';
@@ -10,6 +11,12 @@ const defaultState = {
 
 export default function(state = defaultState, action) {
   switch(action.type) {
+    case ADD_NEW_USER:
+      return {
+        ...state,
+        users: action.payload.data,
+        loading: false
+      } 
    case GET_USERS:
       return {
         ...state,

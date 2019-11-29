@@ -64,7 +64,7 @@ class TestContainer extends Component {
              <br />
               <input type="text"  name="first_name"  placeholder="First name"/>
                <br /><br />
-              <input type="text" name="last_name" placeholder="last name"/>
+              <input type="text" name="last_name" placeholder="Last name"/>
                <br /><br />
               <input type="text" name="email" placeholder="Email"/>
                <br /><br />

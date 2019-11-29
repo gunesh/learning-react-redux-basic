@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getUsers, showLoadingSpinner } from "../actions";
 
-const AddFormTemplate = () => {
-  return <>dfsf</>;
-};
 
 class TestContainer extends Component {
   state = {

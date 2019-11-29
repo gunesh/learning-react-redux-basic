@@ -29,7 +29,7 @@ class TestContainer extends Component {
         <td>{element.last_name}</td>
         <td>{element.email}</td>
         <td>
-          <button onClick={this.doEdit}> Edit </button> <button> Delete</button>
+          <button onClick={this.doEdit}>Edit</button><button>Delete</button>
         </td>
       </tr>
     );

@@ -29,7 +29,8 @@ class TestContainer extends Component {
         <td>{element.last_name}</td>
         <td>{element.email}</td>
         <td>
-          <button onClick={this.doEdit}>Edit</button><button>Delete</button>
+          <button onClick={this.doEdit}>Edit</button>
+          <button>Delete</button>
         </td>
       </tr>
     );
@@ -88,7 +89,7 @@ class TestContainer extends Component {
             </div>
           ) : (
             <div>
-              <button onClick={this.doAdd}> + Add </button>
+              <button onClick={this.doAdd}>+ Add </button>
             </div>
           )}
           {this.state.editForm ? (

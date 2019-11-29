@@ -3,6 +3,10 @@ import { connect } from "react-redux";
 import { getUsers, showLoadingSpinner } from "../actions";
 
 class TestContainer extends Component {
+  state = {
+    addForm: false,
+    editForm: false
+  };
   componentDidMount() {
     this.getUsers();
   }
@@ -28,18 +32,48 @@ class TestContainer extends Component {
   }
 
   doAdd = event => {
-    console.log(event);
+    this.setState({ addForm: true });
   };
+  doCancel = event => {
+    this.setState({ addForm: false });
+  };
+  doSave = event => {
+    console.log('record stored');
+  };
+
+  addFormTemplate = ()=>{
+    return (
+      <div>
+      <input type="text" name="first_name" />
+            <input type="text" name="last_name" />
+            <input type="text" name="email" />
+            </div>
+    );
+  }
 
   render() {
     return (
       <>
         <div className="rmdb-home-grid">
+          
           <br />
+          
           <br />
-          <br />
-          <button onClick={this.doAdd}> + Add </button>
-          <br />
+          {this.state.addForm ? 
+            <div>
+             <br />
+              <input type="text"  name="first_name"  placeholder="First name"/>
+               <br /><br />
+              <input type="text" name="last_name" placeholder="last name"/>
+               <br /><br />
+              <input type="text" name="email" placeholder="Email"/>
+               <br /><br />
+               <button onClick={this.doCancel}>Cancel</button> &nbsp;
+               <button onClick={this.doSave}>Save</button>
+            </div>
+            : 
+            <div><button onClick={this.doAdd}> + Add </button></div>
+          }
           <br />
           <table width="100%" border="1">
             <thead>

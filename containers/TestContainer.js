@@ -20,7 +20,7 @@ class TestContainer extends Component {
         <td>{element.first_name}</td>
         <td>{element.last_name}</td>
         <td>{element.email}</td>
-        <td>Edit Delete</td>
+        <td><button> Edit </button> <button> Delete</button></td>
       </tr>
     );
   }
@@ -32,7 +32,9 @@ class TestContainer extends Component {
       <div className="rmdb-home-grid">
       <br />
       <br />
-      <br /><br />
+      <br />
+      <button> +  Add </button>
+      <br />
       <br />
       <table width="100%" border="1">
           <thead>

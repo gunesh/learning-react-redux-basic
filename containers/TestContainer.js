@@ -14,45 +14,50 @@ class TestContainer extends Component {
     this.props.getUsers();
   };
 
-  getTemplate(element,index) {
+  getTemplate(element, index) {
     return (
       <tr key={index}>
         <td>{element.first_name}</td>
         <td>{element.last_name}</td>
         <td>{element.email}</td>
-        <td><button> Edit </button> <button> Delete</button></td>
+        <td>
+          <button> Edit </button> <button> Delete</button>
+        </td>
       </tr>
     );
   }
 
+  doAdd = event => {
+    console.log(event);
+  };
+
   render() {
     return (
       <>
+        <div className="rmdb-home-grid">
+          <br />
+          <br />
+          <br />
+          <button onClick={this.doAdd}> + Add </button>
+          <br />
+          <br />
+          <table width="100%" border="1">
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Action</th>
+              </tr>
+            </thead>
 
-      <div className="rmdb-home-grid">
-      <br />
-      <br />
-      <br />
-      <button> +  Add </button>
-      <br />
-      <br />
-      <table width="100%" border="1">
-          <thead>
-            <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Email</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {this.props.users.map((element, i) => this.getTemplate(element,i))}
-          </tbody>
-        </table>
-      </div>
-
-        
+            <tbody>
+              {this.props.users.map((element, i) =>
+                this.getTemplate(element, i)
+              )}
+            </tbody>
+          </table>
+        </div>
       </>
     );
   }

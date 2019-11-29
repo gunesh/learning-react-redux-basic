@@ -62,9 +62,9 @@ class TestContainer extends Component {
           {this.state.addForm ? 
             <div>
              <br />
-              <input type="text"  name="first_name"  placeholder="First name"/>
+              <input type="text"  name="first_name"  placeholder="First Name"/>
                <br /><br />
-              <input type="text" name="last_name" placeholder="Last name"/>
+              <input type="text" name="last_name" placeholder="Last Name"/>
                <br /><br />
               <input type="text" name="email" placeholder="Email"/>
                <br /><br />

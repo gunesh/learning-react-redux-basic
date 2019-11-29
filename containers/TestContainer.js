@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getUsers, showLoadingSpinner } from "../actions";
 
-
 class TestContainer extends Component {
   state = {
     addForm: false,
@@ -46,8 +45,8 @@ class TestContainer extends Component {
     event.preventDefault();
     var newUserObj = {
       first_name: event.target.first_name.value,
-      last_name:event.target.last_name.value,
-      email: event.target.email.value,
+      last_name: event.target.last_name.value,
+      email: event.target.email.value
     };
     console.log(newUserObj);
   };
@@ -116,7 +115,7 @@ class TestContainer extends Component {
           <table width="100%" border="1">
             <thead>
               <tr>
-               <th>Id</th>
+                <th>Id</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>

@@ -9,7 +9,10 @@ const AddFormTemplate = () => {
 class TestContainer extends Component {
   state = {
     addForm: false,
-    editForm: false
+    editForm: false,
+    firstName: "",
+    lastName: "",
+    email: ""
   };
   componentDidMount() {
     this.getUsers();
@@ -25,6 +28,7 @@ class TestContainer extends Component {
   getTemplate(element, index) {
     return (
       <tr key={index}>
+        <td>{element.id}</td>
         <td>{element.first_name}</td>
         <td>{element.last_name}</td>
         <td>{element.email}</td>
@@ -42,7 +46,13 @@ class TestContainer extends Component {
     this.setState({ addForm: false });
   };
   doSave = event => {
-    console.log("record stored");
+    event.preventDefault();
+    var newUserObj = {
+      first_name: event.target.first_name.value,
+      last_name:event.target.last_name.value,
+      email: event.target.email.value,
+    };
+    console.log(newUserObj);
   };
   doEdit = event => {
     this.setState({ addForm: false, editForm: true });
@@ -52,6 +62,7 @@ class TestContainer extends Component {
     this.setState({ editForm: false });
   };
   doEditSave = event => {
+    event.preventDefault();
     console.log("record updated");
   };
 
@@ -64,18 +75,20 @@ class TestContainer extends Component {
           <br />
           {this.state.addForm ? (
             <div>
-              <br />
-              <input type="text" name="first_name" placeholder="First Name" />
-              <br />
-              <br />
-              <input type="text" name="last_name" placeholder="Last Name" />
-              <br />
-              <br />
-              <input type="text" name="email" placeholder="Email" />
-              <br />
-              <br />
-              <button onClick={this.doCancel}>Cancel</button> &nbsp;
-              <button onClick={this.doSave}>Save</button>
+              <form onSubmit={this.doSave}>
+                <br />
+                <input type="text" name="first_name" placeholder="First Name" />
+                <br />
+                <br />
+                <input type="text" name="last_name" placeholder="Last Name" />
+                <br />
+                <br />
+                <input type="text" name="email" placeholder="Email" />
+                <br />
+                <br />
+                <button onClick={this.doCancel}>Cancel</button> &nbsp;
+                <button type="submit">Save</button>
+              </form>
             </div>
           ) : (
             <div>
@@ -84,18 +97,20 @@ class TestContainer extends Component {
           )}
           {this.state.editForm ? (
             <div>
-              <br />
-              <input type="text" name="first_name" placeholder="First Name" />
-              <br />
-              <br />
-              <input type="text" name="last_name" placeholder="Last Name" />
-              <br />
-              <br />
-              <input type="text" name="email" placeholder="Email" />
-              <br />
-              <br />
-              <button onClick={this.doEditCancel}>Cancel</button> &nbsp;
-              <button onClick={this.doEditSave}>Update</button>
+              <form onSubmit={this.doEditSave}>
+                <br />
+                <input type="text" name="first_name" placeholder="First Name" />
+                <br />
+                <br />
+                <input type="text" name="last_name" placeholder="Last Name" />
+                <br />
+                <br />
+                <input type="text" name="email" placeholder="Email" />
+                <br />
+                <br />
+                <button onClick={this.doEditCancel}>Cancel</button> &nbsp;
+                <button type="submit">Update</button>
+              </form>
             </div>
           ) : (
             <div />
@@ -104,6 +119,7 @@ class TestContainer extends Component {
           <table width="100%" border="1">
             <thead>
               <tr>
+               <th>Id</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>

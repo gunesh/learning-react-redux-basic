@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getUsers, showLoadingSpinner } from "../actions";
 
+const AddFormTemplate = () => {
+  return <>dfsf</>;
+};
+
 class TestContainer extends Component {
   state = {
     addForm: false,
@@ -25,55 +29,78 @@ class TestContainer extends Component {
         <td>{element.last_name}</td>
         <td>{element.email}</td>
         <td>
-          <button> Edit </button> <button> Delete</button>
+          <button onClick={this.doEdit}> Edit </button> <button> Delete</button>
         </td>
       </tr>
     );
   }
 
   doAdd = event => {
-    this.setState({ addForm: true });
+    this.setState({ addForm: true, editForm: false });
   };
   doCancel = event => {
     this.setState({ addForm: false });
   };
   doSave = event => {
-    console.log('record stored');
+    console.log("record stored");
+  };
+  doEdit = event => {
+    this.setState({ addForm: false, editForm: true });
   };
 
-  addFormTemplate = ()=>{
-    return (
-      <div>
-      <input type="text" name="first_name" />
-            <input type="text" name="last_name" />
-            <input type="text" name="email" />
-            </div>
-    );
-  }
+  doEditCancel = event => {
+    this.setState({ editForm: false });
+  };
+  doEditSave = event => {
+    console.log("record updated");
+  };
 
   render() {
     return (
       <>
         <div className="rmdb-home-grid">
-          
           <br />
-          
+
           <br />
-          {this.state.addForm ? 
+          {this.state.addForm ? (
             <div>
-             <br />
-              <input type="text"  name="first_name"  placeholder="First Name"/>
-               <br /><br />
-              <input type="text" name="last_name" placeholder="Last Name"/>
-               <br /><br />
-              <input type="text" name="email" placeholder="Email"/>
-               <br /><br />
-               <button onClick={this.doCancel}>Cancel</button> &nbsp;
-               <button onClick={this.doSave}>Save</button>
+            <AddFormTemplate />
+              <br />
+              <input type="text" name="first_name" placeholder="First Name" />
+              <br />
+              <br />
+              <input type="text" name="last_name" placeholder="Last Name" />
+              <br />
+              <br />
+              <input type="text" name="email" placeholder="Email" />
+              <br />
+              <br />
+              <button onClick={this.doCancel}>Cancel</button> &nbsp;
+              <button onClick={this.doSave}>Save</button>
             </div>
-            : 
-            <div><button onClick={this.doAdd}> + Add </button></div>
-          }
+          ) : (
+            <div>
+              <button onClick={this.doAdd}> + Add </button>
+            </div>
+          )}
+          {this.state.editForm ? (
+            <div>
+              <br />
+              <input type="text" name="first_name" placeholder="First Name" />
+              <br />
+              <br />
+              <input type="text" name="last_name" placeholder="Last Name" />
+              <br />
+              <br />
+              <input type="text" name="email" placeholder="Email" />
+              <br />
+              <br />
+              <button onClick={this.doEditCancel}>Cancel</button> &nbsp;
+              <button onClick={this.doEditSave}>Update</button>
+            </div>
+          ) : (
+            <div />
+          )}
           <br />
           <table width="100%" border="1">
             <thead>

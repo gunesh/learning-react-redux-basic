@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getUsers, showLoadingSpinner, addNewUser } from "../actions";
+import {
+  getUsers,
+  getUsersDummy,
+  showLoadingSpinner,
+  addNewUser
+} from "../actions";
+
+import Users from '../components/Users/Users';
 
 class TestContainer extends Component {
   state = {
@@ -19,6 +26,7 @@ class TestContainer extends Component {
   getUsers = () => {
     this.props.showLoadingSpinner();
     this.props.getUsers();
+    this.props.getUsersDummy();
   };
 
   getTemplate(element, index) {
@@ -52,11 +60,10 @@ class TestContainer extends Component {
       avatar: ""
     };
     var newUserObj = {
-      name: 'TEST',
+      name: "TEST",
       job: "TEACHER"
     };
     this.props.addNewUser(newUserObj);
-    
   };
   doEdit = element => {
     console.log(element);
@@ -153,11 +160,17 @@ class TestContainer extends Component {
               </tr>
             </thead>
 
-            <tbody>
-              {this.props.users.map((element, i) =>
+          
+              {/*}{this.props.users.map((element, i) =>
                 this.getTemplate(element, i)
-              )}
-            </tbody>
+              )}{*/}
+              <Users
+                    deleteStudent={this.deleteStudent}
+                    usersList={this.props.users}
+                    editStudentSubmit={this.editStudentSubmit}
+                  />
+
+            
           </table>
         </div>
       </>
@@ -171,6 +184,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   getUsers,
+  getUsersDummy,
   showLoadingSpinner,
   addNewUser
 };

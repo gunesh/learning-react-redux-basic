@@ -5,6 +5,7 @@ const BACKDROP_SIZE = 'w1280';
 const POSTER_SIZE = 'w500';
 const USER_API_URL = 'https://jsonplaceholder.typicode.com/users';
 const USER_API_URL1 = 'https://reqres.in/api/users'
+const USER_API_URL2 = 'https://dummy.restapiexample.com/api/v1/employees'
 
 export {
   API_URL,
@@ -13,5 +14,6 @@ export {
   BACKDROP_SIZE,
   POSTER_SIZE,
   USER_API_URL,
-  USER_API_URL1
+  USER_API_URL1,
+  USER_API_URL2
 }

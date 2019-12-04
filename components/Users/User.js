@@ -4,29 +4,35 @@ export default class User extends Component {
   constructor(props) {
     super(props);
     this.state = { isEdit: false };
-    this.editStudent = this.editStudent.bind(this);
-    this.editStudentSubmit = this.editStudentSubmit.bind(this);
-    this.deleteStudent = this.deleteStudent.bind(this);
+    this.editUser = this.editUser.bind(this);
+    this.editUserSubmit = this.editUserSubmit.bind(this);
+    this.deleteUser = this.deleteUser.bind(this);
+     this.editCancel = this.editCancel.bind(this);
   }
-  deleteStudent() {
-    const { id } = this.props.student;
-    this.props.deleteStudent(id);
+  deleteUser() {
+    const { id } = this.props.users;
+    this.props.deleteUser(id);
   }
-  editStudent() {
+  editUser() {
     this.setState((prevState, props) => ({
       isEdit: !prevState.isEdit
     }));
   }
-  editStudentSubmit() {
+  editUserSubmit() {
     this.setState((prevState, props) => ({
       isEdit: !prevState.isEdit
     }));
-    this.props.editStudentSubmit(
+    this.props.editUserSubmit(
       this.props.user.id,
       this.nameInput.value,
       this.gradeInput.value,
       this.schoolInput.value
     );
+  }
+  editCancel() {
+   this.setState((prevState, props) => ({
+      isEdit: !prevState.isEdit
+    }));
   }
   render() {
     const { id, first_name, last_name, email } = this.props.user;
@@ -52,8 +58,8 @@ export default class User extends Component {
           />
         </td>
         <td>
-          <button onClick={this.editStudentSubmit}>Update</button>&nbsp;
-          <button onClick={this.editStudentSubmit}>Cancel</button>
+          <button onClick={this.editUserSubmit}>Update</button>&nbsp;
+          <button onClick={this.editCancel}>Cancel</button>
         </td>
       </tr>
     ) : (
@@ -63,8 +69,8 @@ export default class User extends Component {
         <td>{last_name}</td>
         <td>{email}</td>
         <td>
-          <button onClick={this.editStudent}>Edit</button> &nbsp;
-          <button onClick={this.deleteStudent}>Delete</button>
+          <button onClick={this.editUser}>Edit</button> &nbsp;
+          <button onClick={this.deleteUser}>Delete</button>
         </td>
       </tr>
     );

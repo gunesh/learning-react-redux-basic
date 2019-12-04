@@ -4,19 +4,28 @@ import {
   getUsers,
   getUsersDummy,
   showLoadingSpinner,
-  addNewUser
+  addNewUser,
+  addUser,
+  deleteUser,
+  updateUser
 } from "../actions";
 
-import Users from '../components/Users/Users';
+import Users from "../components/Users/Users";
 
 class TestContainer extends Component {
-  state = {
-    addForm: false,
-    editForm: false,
-    first_name: "",
-    last_name: "",
-    email: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      addForm: false,
+      editForm: false,
+      first_name: "",
+      last_name: "",
+      email: ""
+    };
+    this.deleteUser = this.deleteUser.bind(this);
+    this.editUserSubmit = this.editUserSubmit.bind(this);
+  }
+
   componentDidMount() {
     this.getUsers();
   }
@@ -29,20 +38,6 @@ class TestContainer extends Component {
     this.props.getUsersDummy();
   };
 
-  getTemplate(element, index) {
-    return (
-      <tr key={index}>
-        <td>{element.id}</td>
-        <td>{element.first_name}</td>
-        <td>{element.last_name}</td>
-        <td>{element.email}</td>
-        <td>
-          <button onClick={this.doEdit}>Edit</button>
-          <button>Delete</button>
-        </td>
-      </tr>
-    );
-  }
 
   doAdd = event => {
     this.setState({ addForm: true, editForm: false });
@@ -76,13 +71,23 @@ class TestContainer extends Component {
     });
   };
 
-  doEditCancel = event => {
-    this.setState({ editForm: false });
-  };
-  doEditSave = event => {
-    event.preventDefault();
-    console.log("record updated");
-  };
+
+
+  deleteUser(id) {
+    let r = window.confirm("Do you want to delete this item");
+    if (r === true) {
+      this.props.deleteUser(id);
+    }
+  }
+  editUserSubmit(id, first_name, last_name, email) {
+    console.log(this.props);
+    this.props.updateUser({
+      id: id,
+      first_name: first_name,
+      last_name: last_name,
+      email: email
+    });
+  }
 
   render() {
     return (
@@ -160,17 +165,14 @@ class TestContainer extends Component {
               </tr>
             </thead>
 
-          
-              {/*}{this.props.users.map((element, i) =>
+            {/*}{this.props.users.map((element, i) =>
                 this.getTemplate(element, i)
               )}{*/}
-              <Users
-                    deleteStudent={this.deleteStudent}
-                    usersList={this.props.users}
-                    editStudentSubmit={this.editStudentSubmit}
-                  />
-
-            
+            <Users
+              deleteUser={this.deleteUser}
+              usersList={this.props.users}
+              editUserSubmit={this.editUserSubmit}
+            />
           </table>
         </div>
       </>

@@ -10,8 +10,8 @@ export default class Users extends Component {
         key={index}
         user={item}
         index={index}
-        editStudentSubmit={this.props.editStudentSubmit}
-        deleteStudent={this.props.deleteStudent}
+        editUserSubmit={this.props.editUserSubmit}
+        deleteUser={this.props.deleteUser}
       />
     ));
     return <tbody>{trItem}</tbody>;

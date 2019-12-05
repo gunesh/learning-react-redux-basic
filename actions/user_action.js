@@ -5,7 +5,7 @@ import {
   USER_API_URL1,
   USER_API_URL2
 } from "../config";
-import { getResult, createResult } from "../helpers";
+import { getResult, createResult,log } from "../helpers";
 // actions types for Movie
 export const GET_USERS = "GET_USERS";
 export const GET_USERS_DUMMY = "GET_USERS_DUMMY";

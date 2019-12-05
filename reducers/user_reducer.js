@@ -8,6 +8,7 @@ import {
   UPDATE_USER
 } from "../actions";
 
+import { log } from "../helpers";
 const defaultState = {
   users: [],
   users_dummy: [],
@@ -15,7 +16,7 @@ const defaultState = {
 };
 
 export default function(state = defaultState, action) {
-  console.log(action);
+  
   switch (action.type) {
     case ADD_USER:
     

@@ -4,6 +4,17 @@ export const calcTime = time => {
   const mins = time % 60;
   return `${hours}h ${mins}m`;
 };
+
+
+export const log = (title,obj) => {
+  console.log('--------------------');
+  console.log(title);
+  console.log(obj);
+  console.log('--------------------');
+};
+
+
+
 // Convert a number to money formatting
 export const convertMoney = money => {
   var formatter = new Intl.NumberFormat("en-US", {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { log } from '../helpers';
 import { connect } from 'react-redux';
 import {
   getPopularMovies,

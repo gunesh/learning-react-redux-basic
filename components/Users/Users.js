@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import User from "./User.js";
+import { log } from '../helpers';
 
 export default class Users extends Component {
   render() {

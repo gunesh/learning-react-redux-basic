@@ -188,7 +188,10 @@ const mapDispatchToProps = {
   getUsers,
   getUsersDummy,
   showLoadingSpinner,
-  addNewUser
+  addNewUser,
+  addUser,
+  deleteUser,
+  updateUser
 };
 
 export default connect(

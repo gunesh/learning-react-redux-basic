@@ -72,10 +72,10 @@ export function deleteUser(Id) {
   };
 }
 
-export function updateUser(user) {
-  console.log(users);
+export function updateUser(info) {
+  console.log(info);
   return {
     type: "UPDATE_USER",
-    payload: user
+    payload: []
   };
 }

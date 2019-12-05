@@ -16,17 +16,17 @@ const defaultState = {
 
 export default function(state = defaultState, action) {
   switch (action.type) {
-    case "ADD_STUDENT":
+    case "ADD_USER":
       let stateCopy = [...state, action.payload];
       localStorage.setItem("users", JSON.stringify(stateCopy));
       return stateCopy;
 
-    case "DELETE_STUDENT":
+    case "DELETE_USER":
       stateCopy = state.filter(x => x.id !== action.payload);
       localStorage.setItem("users", JSON.stringify(stateCopy));
       return stateCopy;
 
-    case "UPDATE_STUDENT":
+    case "UPDATE_USER":
       stateCopy = state.map(student => {
         const { id, name, grade, school } = action.payload;
         if (student.id === id) {

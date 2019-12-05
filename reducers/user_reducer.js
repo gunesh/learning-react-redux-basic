@@ -16,14 +16,20 @@ const defaultState = {
 };
 
 export default function(state = defaultState, action) {
-  
+   log("b", action);
+   log("c",state.users);
   switch (action.type) {
     case ADD_USER:
-    
-      var newUserList = state.users.push(action.payload);
+    const newUsers = state.users.push({
+      id:11,
+      first_name: "AAA",
+      last_name: "BBB",
+      email: "aa@bb.ccc",
+      avatar:""
+    });
       return {
         ...state,
-        users: state.users,
+        users: newUsers,
         loading: false
       };
 

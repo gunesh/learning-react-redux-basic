@@ -53,6 +53,7 @@ export function addNewUser(newUserObj) {
 }
 
 export function addUser(user) {
+  log('Action',user);
   return {
     type: "ADD_USER",
     payload: user

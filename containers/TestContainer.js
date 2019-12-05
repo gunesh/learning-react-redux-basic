@@ -48,8 +48,7 @@ class TestContainer extends Component {
   };
   doSave = event => {
     event.preventDefault();
-
-    this.props.addUser({
+this.props.users.push({
       id:
         Math.max(
           ...this.props.users.map(function(o) {
@@ -58,8 +57,10 @@ class TestContainer extends Component {
         ) + 1,
       first_name: "AAA",
       last_name: "BBB",
-      email: "aa@bb.ccc"
+      email: "aa@bb.ccc",
+      avatar:""
     });
+    this.props.addUser(this.props.users);
 
     // var newUserObj = {
     //   first_name: event.target.first_name.value,

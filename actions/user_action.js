@@ -52,7 +52,7 @@ export function addNewUser(newUserObj) {
   };
 }
 
-export function addUser(student) {
+export function addUser(users) {
   return {
     type: "ADD_USER",
     payload: users

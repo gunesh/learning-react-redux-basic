@@ -24,6 +24,8 @@ class TestContainer extends Component {
     };
     this.deleteUser = this.deleteUser.bind(this);
     this.editUserSubmit = this.editUserSubmit.bind(this);
+    this.doAdd = this.doAdd.bind(this);
+    this.doSave = this.doSave.bind(this);
   }
 
   componentDidMount() {
@@ -38,7 +40,6 @@ class TestContainer extends Component {
     this.props.getUsersDummy();
   };
 
-
   doAdd = event => {
     this.setState({ addForm: true, editForm: false });
   };
@@ -47,18 +48,31 @@ class TestContainer extends Component {
   };
   doSave = event => {
     event.preventDefault();
-    var newUserObj = {
-      first_name: event.target.first_name.value,
-      last_name: event.target.last_name.value,
-      email: event.target.email.value,
-      id: "",
-      avatar: ""
-    };
-    var newUserObj = {
-      name: "TEST",
-      job: "TEACHER"
-    };
-    this.props.addNewUser(newUserObj);
+
+    this.props.addUser({
+      id:
+        Math.max(
+          ...this.props.users.map(function(o) {
+            return o.id;
+          })
+        ) + 1,
+      first_name: "AAA",
+      last_name: "BBB",
+      email: "aa@bb.ccc"
+    });
+
+    // var newUserObj = {
+    //   first_name: event.target.first_name.value,
+    //   last_name: event.target.last_name.value,
+    //   email: event.target.email.value,
+    //   id: "",
+    //   avatar: ""
+    // };
+    // var newUserObj = {
+    //   name: "TEST",
+    //   job: "TEACHER"
+    // };
+    // this.props.addNewUser(newUserObj);
   };
   doEdit = element => {
     this.setState({
@@ -69,8 +83,6 @@ class TestContainer extends Component {
       email: element.email
     });
   };
-
-
 
   deleteUser(id) {
     let r = window.confirm("Do you want to delete this item");

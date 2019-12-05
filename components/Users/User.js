@@ -7,7 +7,7 @@ export default class User extends Component {
     this.editUser = this.editUser.bind(this);
     this.editUserSubmit = this.editUserSubmit.bind(this);
     this.deleteUser = this.deleteUser.bind(this);
-     this.editCancel = this.editCancel.bind(this);
+    this.editCancel = this.editCancel.bind(this);
   }
   deleteUser() {
     const { id } = this.props.users;
@@ -22,6 +22,7 @@ export default class User extends Component {
     this.setState((prevState, props) => ({
       isEdit: !prevState.isEdit
     }));
+    console.log(this.props.user.id);
     this.props.editUserSubmit(
       this.props.user.id,
       this.nameInput.value,
@@ -30,7 +31,7 @@ export default class User extends Component {
     );
   }
   editCancel() {
-   this.setState((prevState, props) => ({
+    this.setState((prevState, props) => ({
       isEdit: !prevState.isEdit
     }));
   }

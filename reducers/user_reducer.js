@@ -17,15 +17,19 @@ const defaultState = {
 export default function(state = defaultState, action) {
   console.log(action);
   switch (action.type) {
-    case "ADD_USER":
-      let stateCopy = [...state, action.payload];
-      localStorage.setItem("users", JSON.stringify(stateCopy));
-      return stateCopy;
+    case ADD_USER:
+      return {
+        ...state,
+        users: action.payload.data,
+        loading: false
+      };
 
-    case "DELETE_USER":
-      stateCopy = state.filter(x => x.id !== action.payload);
-      localStorage.setItem("users", JSON.stringify(stateCopy));
-      return stateCopy;
+    case DELETE_USER:
+      return {
+        ...state,
+        users: action.payload.data,
+        loading: false
+      };
 
     case UPDATE_USER:
       const { id, first_name, last_name, email } = action.payload;

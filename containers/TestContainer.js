@@ -91,7 +91,6 @@ class TestContainer extends Component {
     }
   }
   editUserSubmit(id, first_name, last_name, email) {
-    console.log(this.props);
     this.props.updateUser({
       id: id,
       first_name: first_name,
@@ -101,7 +100,6 @@ class TestContainer extends Component {
   }
 
   render() {
-    console.log(this.props.users);
     return (
       <>
         <div className="rmdb-home-grid">

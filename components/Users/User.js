@@ -22,7 +22,6 @@ export default class User extends Component {
     this.setState((prevState, props) => ({
       isEdit: !prevState.isEdit
     }));
-    console.log(this.props.user.id);
     this.props.editUserSubmit(
       this.props.user.id,
       this.nameInput.value,

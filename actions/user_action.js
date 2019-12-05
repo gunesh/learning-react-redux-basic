@@ -44,12 +44,6 @@ export function getUsersDummy() {
 export function addNewUser(newUserObj) {
   const endpoint = `${USER_API_URL1}`;
   const request = createResult(newUserObj, endpoint);
-  console.log(request);
-  // return {
-  //   type: ADD_NEW_USER,
-  //   payload: request
-  // };
-
   const endpoint = `${USER_API_URL1}`;
   const request = getResult(endpoint);
   return {
@@ -73,9 +67,8 @@ export function deleteUser(Id) {
 }
 
 export function updateUser(info) {
-  console.log(info);
   return {
     type: "UPDATE_USER",
-    payload: []
+    payload: info
   };
 }

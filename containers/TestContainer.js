@@ -61,7 +61,6 @@ class TestContainer extends Component {
     this.props.addNewUser(newUserObj);
   };
   doEdit = element => {
-    console.log(element);
     this.setState({
       addForm: false,
       editForm: true,

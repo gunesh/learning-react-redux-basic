@@ -15,6 +15,7 @@ const defaultState = {
 };
 
 export default function(state = defaultState, action) {
+  console.log(action);
   switch (action.type) {
     case "ADD_USER":
       let stateCopy = [...state, action.payload];
@@ -26,18 +27,21 @@ export default function(state = defaultState, action) {
       localStorage.setItem("users", JSON.stringify(stateCopy));
       return stateCopy;
 
-    case "UPDATE_USER":
-      stateCopy = state.map(student => {
-        const { id, name, grade, school } = action.payload;
-        if (student.id === id) {
-          student.name = name;
-          student.grade = grade;
-          student.school = school;
+    case UPDATE_USER:
+      stateCopy = state.users.map(user => {
+        const { id, first_name, last_name, email } = action.payload;
+        if (user.id === id) {
+          user.id = id;
+          user.first_name = first_name;
+          user.last_name = last_name;
+          user.email = email;
         }
-        return student;
       });
-      localStorage.setItem("users", JSON.stringify(stateCopy));
-      return stateCopy;
+      return {
+        ...state,
+        users: stateCopy,
+        loading: false
+      };
 
     case ADD_NEW_USER:
       return {

@@ -28,8 +28,8 @@ export default function(state = defaultState, action) {
       return stateCopy;
 
     case UPDATE_USER:
+      const { id, first_name, last_name, email } = action.payload;
       stateCopy = state.users.map(user => {
-        const { id, first_name, last_name, email } = action.payload;
         if (user.id === id) {
           user.id = id;
           user.first_name = first_name;

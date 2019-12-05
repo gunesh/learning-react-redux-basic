@@ -18,7 +18,7 @@ export default function(state = defaultState, action) {
   console.log(action);
   switch (action.type) {
     case ADD_USER:
-    console.log(state.users);
+    
       var newUserList = state.users.push(action.payload);
       return {
         ...state,

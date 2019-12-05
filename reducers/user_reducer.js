@@ -18,9 +18,11 @@ export default function(state = defaultState, action) {
   console.log(action);
   switch (action.type) {
     case ADD_USER:
+    console.log(state.users);
+      var newUserList = state.users.push(action.payload);
       return {
         ...state,
-        users: action.payload.data,
+        users: state.users,
         loading: false
       };
 
@@ -32,18 +34,9 @@ export default function(state = defaultState, action) {
       };
 
     case UPDATE_USER:
-      const { id, first_name, last_name, email } = action.payload;
-      stateCopy = state.users.map(user => {
-        if (user.id === id) {
-          user.id = id;
-          user.first_name = first_name;
-          user.last_name = last_name;
-          user.email = email;
-        }
-      });
       return {
         ...state,
-        users: stateCopy,
+        users: state.users,
         loading: false
       };
 

@@ -52,10 +52,11 @@ export function addNewUser(newUserObj) {
   };
 }
 
-export function addUser(users) {
+export function addUser(user) {
+  console.log(this);
   return {
     type: "ADD_USER",
-    payload: users
+    payload: user
   };
 }
 

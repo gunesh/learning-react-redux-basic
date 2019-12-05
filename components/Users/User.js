@@ -36,6 +36,7 @@ export default class User extends Component {
     }));
   }
   render() {
+    console.log(this.props.user);
     const { id, first_name, last_name, email } = this.props.user;
     return this.state.isEdit === true ? (
       <tr className="bg-warning" key={this.props.index}>

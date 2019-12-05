@@ -101,6 +101,7 @@ class TestContainer extends Component {
   }
 
   render() {
+    console.log(this.props.users);
     return (
       <>
         <div className="rmdb-home-grid">
